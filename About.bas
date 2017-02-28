@@ -65,7 +65,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	lstOne.SingleLineLayout .ItemHeight = 40dip
 	lstOne.AddSingleLine2("App Name : Myanmar Jojar Font",6)
 	lstOne.AddSingleLine2 ("Font Developer : Khon Soe Zaw Thu   ", 2)
-	lstOne.AddSingleLine2("Version : 1.0",7)
+	lstOne.AddSingleLine2("Version : 1.1",7)
 	lstOne.AddSingleLine2 ("Developed By : Khun Htetz Naing    ", 1)
 	lstOne.AddSingleLine2 ("Website : www.HtetzNaing.com  ", 4)
 	lstOne.AddSingleLine2 ("Facebook : www.fb.com/MmFreeAndroidApps   ", 5)

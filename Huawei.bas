@@ -31,7 +31,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	
 	lb.Initialize("lb")
 	lb.Gravity = Gravity.CENTER
-	lb.Text = "	ပထမဦးစြာ Install ကိုႏွိပ္ပါ။ ျပီးရင္ေအာက္ပါ Change Font ကိုနွိပ္ျပီး Myanmar Jojar Font နာမည္နဲ့ Theme ကိုေရြးေပးလိုက္ပါ။ Change Font ကိုနွိပ္လို့ Theme ထဲကိုေရာက္မသြားခဲ့ရင္ မိမိဘာသာဖုန္းထဲက Theme ဆိုတဲ့ App ထဲသိုသြားျပီး ေရြးခ်ယ္ေပးပါ။"
+	lb.Text = "	ပထမဦးစြာ Install ကိုႏွိပ္ပါ။ ျပီးရင္ေအာက္ပါ Change Font ကိုနွိပ္ျပီး Myanmar Jojar Font နာမည္နဲ့ Theme ကိုေရြးေပးလိုက္ပါ။"
 	Activity.AddView(lb,2%x,55dip+1%y,90%x,30%y)
 	lb.TextColor = Colors.Black
 	lb.Typeface = mm
@@ -135,7 +135,10 @@ Sub b2_Click
 	i.SetComponent("com.huawei.android.thememanager/.HwThemeManagerActivity")
 	StartActivity(i)
 	Catch
-		Msgbox("Your phone is not Huawei EMUI" & CRLF & "Wrong ?? so, please go to Theme and choose Myanmar Heart Font","Attention!")
+		Dim pm As PackageManager
+		Dim i As Intent
+		i=pm.GetApplicationIntent("com.huawei.android.thememanager")
+		StartActivity(i)
 		End Try
 End Sub
 

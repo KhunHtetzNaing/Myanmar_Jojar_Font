@@ -416,8 +416,8 @@ mostCurrent._lstone.getSingleLineLayout().setItemHeight(anywheresoftware.b4a.key
 mostCurrent._lstone.AddSingleLine2("App Name : Myanmar Jojar Font",(Object)(6));
  //BA.debugLineNum = 62;BA.debugLine="lstOne.AddSingleLine2 (\"Font Developer : Khon Soe";
 mostCurrent._lstone.AddSingleLine2("Font Developer : Khon Soe Zaw Thu   ",(Object)(2));
- //BA.debugLineNum = 63;BA.debugLine="lstOne.AddSingleLine2(\"Version : 1.0\",7)";
-mostCurrent._lstone.AddSingleLine2("Version : 1.0",(Object)(7));
+ //BA.debugLineNum = 63;BA.debugLine="lstOne.AddSingleLine2(\"Version : 1.1\",7)";
+mostCurrent._lstone.AddSingleLine2("Version : 1.1",(Object)(7));
  //BA.debugLineNum = 64;BA.debugLine="lstOne.AddSingleLine2 (\"Developed By : Khun Htetz";
 mostCurrent._lstone.AddSingleLine2("Developed By : Khun Htetz Naing    ",(Object)(1));
  //BA.debugLineNum = 65;BA.debugLine="lstOne.AddSingleLine2 (\"Website : www.HtetzNaing.";

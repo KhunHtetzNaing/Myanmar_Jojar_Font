@@ -366,7 +366,7 @@ mostCurrent._lb.Initialize(mostCurrent.activityBA,"lb");
  //BA.debugLineNum = 28;BA.debugLine="lb.Gravity = Gravity.CENTER";
 mostCurrent._lb.setGravity(anywheresoftware.b4a.keywords.Common.Gravity.CENTER);
  //BA.debugLineNum = 29;BA.debugLine="lb.Text = \"	ပထမဦးစြာ Install ကိုႏွိပ္ပါ။ ျပီးရင္ေ";
-mostCurrent._lb.setText((Object)("	ပထမဦးစြာ Install ကိုႏွိပ္ပါ။ ျပီးရင္ေအာက္ပါ Change Font ကိုနွိပ္ျပီး Myanmar Jojar Font နာမည္နဲ့ Theme ကိုေရြးေပးလိုက္ပါ။ Change Font ကိုနွိပ္လို့ Theme ထဲကိုေရာက္မသြားခဲ့ရင္ မိမိဘာသာဖုန္းထဲက Theme ဆိုတဲ့ App ထဲသိုသြားျပီး ေရြးခ်ယ္ေပးပါ။"));
+mostCurrent._lb.setText((Object)("	ပထမဦးစြာ Install ကိုႏွိပ္ပါ။ ျပီးရင္ေအာက္ပါ Change Font ကိုနွိပ္ျပီး Myanmar Jojar Font နာမည္နဲ့ Theme ကိုေရြးေပးလိုက္ပါ။"));
  //BA.debugLineNum = 30;BA.debugLine="Activity.AddView(lb,2%x,55dip+1%y,90%x,30%y)";
 mostCurrent._activity.AddView((android.view.View)(mostCurrent._lb.getObject()),anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (2),mostCurrent.activityBA),(int) (anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (55))+anywheresoftware.b4a.keywords.Common.PerYToCurrent((float) (1),mostCurrent.activityBA)),anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (90),mostCurrent.activityBA),anywheresoftware.b4a.keywords.Common.PerYToCurrent((float) (30),mostCurrent.activityBA));
  //BA.debugLineNum = 31;BA.debugLine="lb.TextColor = Colors.Black";
@@ -514,31 +514,31 @@ _ad2.setEnabled(anywheresoftware.b4a.keywords.Common.True);
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 158;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 160;BA.debugLine="End Sub";
+ //BA.debugLineNum = 161;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 163;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 141;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 143;BA.debugLine="End Sub";
+ //BA.debugLineNum = 144;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 146;BA.debugLine="End Sub";
 return "";
 }
 public static String  _ad1_tick() throws Exception{
- //BA.debugLineNum = 145;BA.debugLine="Sub ad1_Tick";
- //BA.debugLineNum = 146;BA.debugLine="If Interstitial.Ready Then Interstitial.Show";
+ //BA.debugLineNum = 148;BA.debugLine="Sub ad1_Tick";
+ //BA.debugLineNum = 149;BA.debugLine="If Interstitial.Ready Then Interstitial.Show";
 if (mostCurrent._interstitial.getReady()) { 
 mostCurrent._interstitial.Show();};
- //BA.debugLineNum = 147;BA.debugLine="ad1.Enabled = False";
+ //BA.debugLineNum = 150;BA.debugLine="ad1.Enabled = False";
 _ad1.setEnabled(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 148;BA.debugLine="End Sub";
+ //BA.debugLineNum = 151;BA.debugLine="End Sub";
 return "";
 }
 public static String  _ad2_tick() throws Exception{
- //BA.debugLineNum = 154;BA.debugLine="Sub ad2_Tick";
- //BA.debugLineNum = 155;BA.debugLine="If Interstitial.Ready Then Interstitial.Show";
+ //BA.debugLineNum = 157;BA.debugLine="Sub ad2_Tick";
+ //BA.debugLineNum = 158;BA.debugLine="If Interstitial.Ready Then Interstitial.Show";
 if (mostCurrent._interstitial.getReady()) { 
 mostCurrent._interstitial.Show();};
- //BA.debugLineNum = 156;BA.debugLine="End Sub";
+ //BA.debugLineNum = 159;BA.debugLine="End Sub";
 return "";
 }
 public static String  _b1_click() throws Exception{
@@ -560,6 +560,7 @@ return "";
 }
 public static String  _b2_click() throws Exception{
 anywheresoftware.b4a.objects.IntentWrapper _i = null;
+anywheresoftware.b4a.phone.PackageManagerWrapper _pm = null;
  //BA.debugLineNum = 126;BA.debugLine="Sub b2_Click";
  //BA.debugLineNum = 127;BA.debugLine="Try";
 try { //BA.debugLineNum = 128;BA.debugLine="Dim i As Intent";
@@ -572,17 +573,23 @@ _i.SetComponent("com.huawei.android.thememanager/.HwThemeManagerActivity");
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(_i.getObject()));
  } 
        catch (Exception e7) {
-			processBA.setLastException(e7); //BA.debugLineNum = 133;BA.debugLine="Msgbox(\"Your phone is not Huawei EMUI\" & CRLF &";
-anywheresoftware.b4a.keywords.Common.Msgbox("Your phone is not Huawei EMUI"+anywheresoftware.b4a.keywords.Common.CRLF+"Wrong ?? so, please go to Theme and choose Myanmar Heart Font","Attention!",mostCurrent.activityBA);
+			processBA.setLastException(e7); //BA.debugLineNum = 133;BA.debugLine="Dim pm As PackageManager";
+_pm = new anywheresoftware.b4a.phone.PackageManagerWrapper();
+ //BA.debugLineNum = 134;BA.debugLine="Dim i As Intent";
+_i = new anywheresoftware.b4a.objects.IntentWrapper();
+ //BA.debugLineNum = 135;BA.debugLine="i=pm.GetApplicationIntent(\"com.huawei.android.th";
+_i = _pm.GetApplicationIntent("com.huawei.android.thememanager");
+ //BA.debugLineNum = 136;BA.debugLine="StartActivity(i)";
+anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(_i.getObject()));
  };
- //BA.debugLineNum = 135;BA.debugLine="End Sub";
+ //BA.debugLineNum = 138;BA.debugLine="End Sub";
 return "";
 }
 public static String  _b3_click() throws Exception{
- //BA.debugLineNum = 137;BA.debugLine="Sub b3_Click";
- //BA.debugLineNum = 138;BA.debugLine="StartActivity(Tutorial)";
+ //BA.debugLineNum = 140;BA.debugLine="Sub b3_Click";
+ //BA.debugLineNum = 141;BA.debugLine="StartActivity(Tutorial)";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._tutorial.getObject()));
- //BA.debugLineNum = 139;BA.debugLine="End Sub";
+ //BA.debugLineNum = 142;BA.debugLine="End Sub";
 return "";
 }
 public static String  _globals() throws Exception{
@@ -619,20 +626,20 @@ mostCurrent._mm.setObject((android.graphics.Typeface)(mostCurrent._mm.LoadFromAs
 return "";
 }
 public static String  _interstitial_adclosed() throws Exception{
- //BA.debugLineNum = 150;BA.debugLine="Sub Interstitial_AdClosed";
- //BA.debugLineNum = 151;BA.debugLine="Interstitial.LoadAd";
+ //BA.debugLineNum = 153;BA.debugLine="Sub Interstitial_AdClosed";
+ //BA.debugLineNum = 154;BA.debugLine="Interstitial.LoadAd";
 mostCurrent._interstitial.LoadAd();
- //BA.debugLineNum = 152;BA.debugLine="End Sub";
+ //BA.debugLineNum = 155;BA.debugLine="End Sub";
 return "";
 }
 public static String  _menu_click() throws Exception{
- //BA.debugLineNum = 196;BA.debugLine="Sub menu_Click";
- //BA.debugLineNum = 197;BA.debugLine="If sm.isVisible Then sm.Hide Else sm.Show";
+ //BA.debugLineNum = 199;BA.debugLine="Sub menu_Click";
+ //BA.debugLineNum = 200;BA.debugLine="If sm.isVisible Then sm.Hide Else sm.Show";
 if (mostCurrent._sm._isvisible()) { 
 mostCurrent._sm._hide();}
 else {
 mostCurrent._sm._show();};
- //BA.debugLineNum = 198;BA.debugLine="End Sub";
+ //BA.debugLineNum = 201;BA.debugLine="End Sub";
 return "";
 }
 public static String  _process_globals() throws Exception{
@@ -645,93 +652,93 @@ return "";
 }
 public static String  _share_click() throws Exception{
 anywheresoftware.b4a.objects.IntentWrapper _shareit = null;
- //BA.debugLineNum = 200;BA.debugLine="Sub share_Click";
- //BA.debugLineNum = 201;BA.debugLine="Dim ShareIt As Intent";
+ //BA.debugLineNum = 203;BA.debugLine="Sub share_Click";
+ //BA.debugLineNum = 204;BA.debugLine="Dim ShareIt As Intent";
 _shareit = new anywheresoftware.b4a.objects.IntentWrapper();
- //BA.debugLineNum = 202;BA.debugLine="copy.clrText";
+ //BA.debugLineNum = 205;BA.debugLine="copy.clrText";
 mostCurrent._copy.clrText(mostCurrent.activityBA);
- //BA.debugLineNum = 203;BA.debugLine="copy.setText(\"#Myanmar_Jojar_Font App! Beautiful";
+ //BA.debugLineNum = 206;BA.debugLine="copy.setText(\"#Myanmar_Jojar_Font App! Beautiful";
 mostCurrent._copy.setText(mostCurrent.activityBA,"#Myanmar_Jojar_Font App! Beautiful Myanmar Zawgyi Font Style!	You can Use in Samung, Oppo,Vivo, Huawei (EMUI) and Xiaomi (MIUI) without Root Access!!!! Download Free at : http://bit.ly/2mqSEWy");
- //BA.debugLineNum = 204;BA.debugLine="ShareIt.Initialize (ShareIt.ACTION_SEND,\"\")";
+ //BA.debugLineNum = 207;BA.debugLine="ShareIt.Initialize (ShareIt.ACTION_SEND,\"\")";
 _shareit.Initialize(_shareit.ACTION_SEND,"");
- //BA.debugLineNum = 205;BA.debugLine="ShareIt.SetType (\"text/plain\")";
+ //BA.debugLineNum = 208;BA.debugLine="ShareIt.SetType (\"text/plain\")";
 _shareit.SetType("text/plain");
- //BA.debugLineNum = 206;BA.debugLine="ShareIt.PutExtra (\"android.intent.extra.TEXT\",cop";
+ //BA.debugLineNum = 209;BA.debugLine="ShareIt.PutExtra (\"android.intent.extra.TEXT\",cop";
 _shareit.PutExtra("android.intent.extra.TEXT",(Object)(mostCurrent._copy.getText(mostCurrent.activityBA)));
- //BA.debugLineNum = 207;BA.debugLine="ShareIt.PutExtra (\"android.intent.extra.SUBJECT\",";
+ //BA.debugLineNum = 210;BA.debugLine="ShareIt.PutExtra (\"android.intent.extra.SUBJECT\",";
 _shareit.PutExtra("android.intent.extra.SUBJECT",(Object)("Get Free!!"));
- //BA.debugLineNum = 208;BA.debugLine="ShareIt.WrapAsIntentChooser(\"Share App Via...\")";
+ //BA.debugLineNum = 211;BA.debugLine="ShareIt.WrapAsIntentChooser(\"Share App Via...\")";
 _shareit.WrapAsIntentChooser("Share App Via...");
- //BA.debugLineNum = 209;BA.debugLine="StartActivity (ShareIt)";
+ //BA.debugLineNum = 212;BA.debugLine="StartActivity (ShareIt)";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(_shareit.getObject()));
- //BA.debugLineNum = 210;BA.debugLine="End Sub";
+ //BA.debugLineNum = 213;BA.debugLine="End Sub";
 return "";
 }
 public static String  _slidemenu_click(Object _item) throws Exception{
 anywheresoftware.b4a.objects.IntentWrapper _shareit = null;
 anywheresoftware.b4a.phone.Phone.PhoneIntents _p = null;
- //BA.debugLineNum = 163;BA.debugLine="Sub SlideMenu_Click(Item As Object)";
- //BA.debugLineNum = 164;BA.debugLine="sm.Hide";
+ //BA.debugLineNum = 166;BA.debugLine="Sub SlideMenu_Click(Item As Object)";
+ //BA.debugLineNum = 167;BA.debugLine="sm.Hide";
 mostCurrent._sm._hide();
- //BA.debugLineNum = 165;BA.debugLine="Select Item";
+ //BA.debugLineNum = 168;BA.debugLine="Select Item";
 switch (BA.switchObjectToInt(_item,(Object)(1),(Object)(2),(Object)(3),(Object)(4),(Object)(5),(Object)(6),(Object)(7),(Object)(8),(Object)(9))) {
 case 0: {
- //BA.debugLineNum = 167;BA.debugLine="StartActivity(Samsung)";
+ //BA.debugLineNum = 170;BA.debugLine="StartActivity(Samsung)";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._samsung.getObject()));
  break; }
 case 1: {
- //BA.debugLineNum = 169;BA.debugLine="StartActivity(Oppo)";
+ //BA.debugLineNum = 172;BA.debugLine="StartActivity(Oppo)";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._oppo.getObject()));
  break; }
 case 2: {
- //BA.debugLineNum = 171;BA.debugLine="StartActivity(Vivo)";
+ //BA.debugLineNum = 174;BA.debugLine="StartActivity(Vivo)";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._vivo.getObject()));
  break; }
 case 3: {
- //BA.debugLineNum = 173;BA.debugLine="StartActivity(Me)";
+ //BA.debugLineNum = 176;BA.debugLine="StartActivity(Me)";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,huawei.getObject());
  break; }
 case 4: {
- //BA.debugLineNum = 175;BA.debugLine="StartActivity(Xiaomi)";
+ //BA.debugLineNum = 178;BA.debugLine="StartActivity(Xiaomi)";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._xiaomi.getObject()));
  break; }
 case 5: {
- //BA.debugLineNum = 177;BA.debugLine="StartActivity(Other)";
+ //BA.debugLineNum = 180;BA.debugLine="StartActivity(Other)";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._other.getObject()));
  break; }
 case 6: {
- //BA.debugLineNum = 179;BA.debugLine="Dim ShareIt As Intent";
+ //BA.debugLineNum = 182;BA.debugLine="Dim ShareIt As Intent";
 _shareit = new anywheresoftware.b4a.objects.IntentWrapper();
- //BA.debugLineNum = 180;BA.debugLine="copy.clrText";
+ //BA.debugLineNum = 183;BA.debugLine="copy.clrText";
 mostCurrent._copy.clrText(mostCurrent.activityBA);
- //BA.debugLineNum = 181;BA.debugLine="copy.setText(\"#Myanmar_Jojar_Font App! Beautifu";
+ //BA.debugLineNum = 184;BA.debugLine="copy.setText(\"#Myanmar_Jojar_Font App! Beautifu";
 mostCurrent._copy.setText(mostCurrent.activityBA,"#Myanmar_Jojar_Font App! Beautiful Myanmar Zawgyi Font Style!	You can Use in Samung, Oppo,Vivo, Huawei (EMUI) and Xiaomi (MIUI) without Root Access!!!! Download Free at : http://bit.ly/2mqSEWy");
- //BA.debugLineNum = 182;BA.debugLine="ShareIt.Initialize (ShareIt.ACTION_SEND,\"\")";
+ //BA.debugLineNum = 185;BA.debugLine="ShareIt.Initialize (ShareIt.ACTION_SEND,\"\")";
 _shareit.Initialize(_shareit.ACTION_SEND,"");
- //BA.debugLineNum = 183;BA.debugLine="ShareIt.SetType (\"text/plain\")";
+ //BA.debugLineNum = 186;BA.debugLine="ShareIt.SetType (\"text/plain\")";
 _shareit.SetType("text/plain");
- //BA.debugLineNum = 184;BA.debugLine="ShareIt.PutExtra (\"android.intent.extra.TEXT\",c";
+ //BA.debugLineNum = 187;BA.debugLine="ShareIt.PutExtra (\"android.intent.extra.TEXT\",c";
 _shareit.PutExtra("android.intent.extra.TEXT",(Object)(mostCurrent._copy.getText(mostCurrent.activityBA)));
- //BA.debugLineNum = 185;BA.debugLine="ShareIt.PutExtra (\"android.intent.extra.SUBJECT";
+ //BA.debugLineNum = 188;BA.debugLine="ShareIt.PutExtra (\"android.intent.extra.SUBJECT";
 _shareit.PutExtra("android.intent.extra.SUBJECT",(Object)("Get Free!!"));
- //BA.debugLineNum = 186;BA.debugLine="ShareIt.WrapAsIntentChooser(\"Share App Via...\")";
+ //BA.debugLineNum = 189;BA.debugLine="ShareIt.WrapAsIntentChooser(\"Share App Via...\")";
 _shareit.WrapAsIntentChooser("Share App Via...");
- //BA.debugLineNum = 187;BA.debugLine="StartActivity (ShareIt)";
+ //BA.debugLineNum = 190;BA.debugLine="StartActivity (ShareIt)";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(_shareit.getObject()));
  break; }
 case 7: {
- //BA.debugLineNum = 189;BA.debugLine="Dim p As PhoneIntents";
+ //BA.debugLineNum = 192;BA.debugLine="Dim p As PhoneIntents";
 _p = new anywheresoftware.b4a.phone.Phone.PhoneIntents();
- //BA.debugLineNum = 190;BA.debugLine="StartActivity(p.OpenBrowser(\"http://www.htetzna";
+ //BA.debugLineNum = 193;BA.debugLine="StartActivity(p.OpenBrowser(\"http://www.htetzna";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(_p.OpenBrowser("http://www.htetznaing.com")));
  break; }
 case 8: {
- //BA.debugLineNum = 192;BA.debugLine="StartActivity(About)";
+ //BA.debugLineNum = 195;BA.debugLine="StartActivity(About)";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._about.getObject()));
  break; }
 }
 ;
- //BA.debugLineNum = 194;BA.debugLine="End Sub";
+ //BA.debugLineNum = 197;BA.debugLine="End Sub";
 return "";
 }
 }

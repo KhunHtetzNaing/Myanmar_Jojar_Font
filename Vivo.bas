@@ -14,7 +14,7 @@ End Sub
 
 Sub Globals
 	Dim ph As Phone
-	Dim b1,b2,b3 As Label
+	Dim b1,b2,b3,b4 As Label
 	Dim Banner As AdView
 	Dim Interstitial As InterstitialAd
 
@@ -32,8 +32,8 @@ Sub Activity_Create(FirstTime As Boolean)
 	
 	lb.Initialize("lb")
 	lb.Gravity = Gravity.CENTER
-	lb.Text = "	ပထမဦးစြာ Install ကိုႏွိပ္ပါ။ ျပီးရင္ေအာက္ပါ Change Font ကိုနွိပ္ပါ Jojar.txj ကိုဖြင့္ၿပီး Apply လုပ္ေပးလိုက္ပါ"
-	Activity.AddView(lb,2%x,55dip+1%y,90%x,30%y)
+	lb.Text = "	ပထမဦးစြာ Install ကိုႏွိပ္ပါ။ ျပီးရင္ေအာက္ပါ Change Font1 ကိုနွိပ္ပါ Jojar.txj ကိုဖြင့္ၿပီး Apply လုပ္ေပးလိုက္ပါ မရခဲ့ရင္ Change Font2 ကိုနွိပ္ျပီး Myanmar Jojar Font နာမည္နဲ့ Theme ကိုေရြးေပးလိုက္ပါ။"
+	Activity.AddView(lb,2%x,55dip+1%y,90%x,35%y)
 	lb.TextColor = Colors.Black
 	lb.Typeface = mm
 	msg.Initialize("msg")
@@ -56,19 +56,27 @@ Sub Activity_Create(FirstTime As Boolean)
 
 	b2.Initialize("b2")
 	b2.Background = b1bg
-	b2.Text = "Change Font"
+	b2.Text = "Change Font1"
 	b2.Gravity = Gravity.CENTER
 	b2.Textcolor = Colors.White
 	b2.TextSize = 17
 	Activity.AddView(b2,20%x,(b1.Top+b1.Height)+2%y,60%x,50dip)
 
+	b4.Initialize("b4")
+	b4.Background = b1bg
+	b4.Text = "Change Font2"
+	b4.Gravity = Gravity.CENTER
+	b4.TextColor = Colors.White
+	b4.TextSize = 17
+	Activity.AddView(b4,20%x,(b2.Top+b2.Height)+2%y,60%x,50dip)
+	
 	b3.Initialize("b3")
 	b3.Text = "Tutorial"
 	b3.Background = b1bg
 	b3.Gravity = Gravity.CENTER
 	b3.Textcolor = Colors.White
 	b3.TextSize = 17
-	Activity.AddView(b3,20%x,(b2.Top+b2.Height)+2%y,60%x,50dip)
+	Activity.AddView(b3,20%x,(b4.Top+b4.Height)+2%y,60%x,50dip)
 	
 	'NEWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
 	tlb.Initialize("tlb")
@@ -147,8 +155,25 @@ Sub b2_Click
 		msg.Visible = True
 		b1.Visible=False
 		b2.Visible=False
-		msg.Text = "File Manager တစ္ခုခုထဲသို႔သြားၿပီး 	Vivo Myanmar Font ဖိုဒါထဲကိုဝင္ပါ။ Jojar.txj ကိုဖြင့္ၿပီး Apply လုပ္ေပးလိုက္ပါ"
+		msg.Text = "File Manager တစ္ခုခုထဲသို႔သြားၿပီး Vivo Myanmar Font ဖိုဒါထဲကိုဝင္ပါ။ Jojar.txj ကိုဖြင့္ၿပီး Apply လုပ္ေပးလိုက္ပါ သို႔မဟုတ္ Change Font2 နဲ႔ထပ္သြင္းၾကည့္ပါ။"
 		ad1.Enabled =True
+	End Try
+End Sub
+
+Sub b4_Click
+	If File.Exists(File.DirRootExternal & "/Download/i Theme/Font","") = False Then File.MakeDir(File.DirRootExternal,"Download/i Theme/Font")
+	If File.Exists(File.DirRootExternal & "/Download/i Theme/Font","Jojar.txj") = True Then File.Delete(File.DirRootExternal,"Download/i Theme/Font/Jojar.txj")
+	File.Copy(File.DirAssets,"Jojar.txj",File.DirRootExternal & "/Download/i Theme/Font","Jojar.txj")
+	Try
+		Dim i As Intent
+		i.Initialize("", "")
+		i.SetComponent("com.bbk.theme/.mixmatch.font.FontMain")
+		StartActivity(i)
+	Catch
+		Dim i As Intent
+		Dim pm As PackageManager
+		i=pm.GetApplicationIntent("com.bbk.theme")
+		StartActivity(i)
 	End Try
 End Sub
 

@@ -33,7 +33,7 @@ File16=samsung.png
 File17=share.png
 File18=vivo.png
 File19=xiaomi.png
-NumberOfLibraries=9
+NumberOfLibraries=10
 Library1=core
 Library2=phone
 Library3=animatetext
@@ -43,11 +43,12 @@ Library6=animation
 Library7=webviewsettings
 Library8=stringutils
 Library9=clipboard
+Library10=abzipunzip
 @EndOfDesignText@
 #Region  Project Attributes 
 	#ApplicationLabel: Myanmar Jojar Font
-	#VersionCode: 1
-	#VersionName: 1.0
+	#VersionCode: 2
+	#VersionName: 1.1
 	'SupportedOrientations possible values: unspecified, landscape or portrait.
 	#SupportedOrientations: unspecified
 	#CanInstallToExternalStorage: False
@@ -184,6 +185,7 @@ Activity.AddView(lfoot,0%x,(b4.Height+b4.Top)+5%y,100%x,5%y)
 	End If
 	Activity.AddView(Banner, 0dip, 100%y - height, 100%x, height)
 	Banner.LoadAd
+	Log(Banner)
 	
 	Interstitial.Initialize("Interstitial","ca-app-pub-4173348573252986/6173171758")
 	Interstitial.LoadAd
@@ -258,10 +260,7 @@ Sub Activity_KeyPress (KeyCode As Int) As Boolean
 	If KeyCode = KeyCodes.KEYCODE_BACK Then
 		Answ = Msgbox2("If you want to get new updates on  Facebook? Please Like " &CRLF & "Myanmar Android Apps Page!","Attention!", "Yes", "", "No",LoadBitmap(File.DirAssets,"fb.png" ))
 		If Answ = DialogResponse.NEGATIVE Then
-
-			If ph.SdkVersion > 19 Then
 				ad1.Enabled = True
-			End If
 			Return False
 		End If
 	End If

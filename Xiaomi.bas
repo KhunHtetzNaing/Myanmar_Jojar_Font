@@ -25,6 +25,10 @@ Sub Globals
 	Dim copy As BClipboard
 	Dim lb As Label
 	Dim mm As Typeface : mm = mm.LoadFromAssets("Jojar.ttf")
+	
+	Dim ml As MLfiles
+	Dim sdroot As String
+	Dim zip As ABZipUnzip
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -122,25 +126,41 @@ End Sub
 
 Sub b1_Click
 	ad1.Enabled = True
-	If File.Exists(File.DirRootExternal & "/MIUI/theme","") = False Then File.MakeDir(File.DirRootExternal,"Download/theme")
-	If File.Exists(File.DirRootExternal & "/MIUI/theme","Jojar.mtz") = True Then File.Delete(File.DirRootExternal,"MIUI/theme/Jojar.mtz")
-	File.Copy(File.DirAssets,"Jojar.mtz",File.DirRootExternal & "/MIUI/theme","Jojar.mtz")
-	Msgbox("1. Click Offline" &CRLF& "2. Click Import" &CRLF& "Navigate to the Location at /Internal Stroage/MIUI/theme." &CRLF& "After come back here and click Change Font!","Attention!")
-	Dim i As Intent
-	i.Initialize(i.ACTION_VIEW,"com.android.thememanager")
-	StartActivity(i)
+'	If File.Exists(File.DirRootExternal & "/MIUI/theme","") = False Then File.MakeDir(File.DirRootExternal,"Download/theme")
+'	If File.Exists(File.DirRootExternal & "/MIUI/theme","Jojar.mtz") = True Then File.Delete(File.DirRootExternal,"MIUI/theme/Jojar.mtz")
+'	File.Copy(File.DirAssets,"Jojar.mtz",File.DirRootExternal & "/MIUI/theme","Jojar.mtz")
+'	Msgbox("1. Click Offline" &CRLF& "2. Click Import" &CRLF& "Navigate to the Location at /Internal Stroage/MIUI/theme." &CRLF& "After come back here and click Change Font!","Attention!")
+'	Dim i As Intent
+'	i.Initialize(i.ACTION_VIEW,"com.android.thememanager")
+	'	StartActivity(i)
+	ml.mkdir ("/sdcard/MIUI/theme")
+	If ml.Exists("/sdcard/MIUI/theme")Then
+	Else
+		Msgbox("MISSING FILE","Error")
+		Activity.Finish
+	End If
+
+	sdroot = File.DirDefaultExternal & "/"
+	File.Copy(File.DirAssets, "data.zip", File.DirDefaultExternal, "data.zip")
+	
+	Log(zip.ABUnzip(sdroot & "data.zip", File.DirRootExternal & "/MIUI/theme"))
+	Log(File.ListFiles(File.DirrootExternal& "/MIUI/theme"))
+	
+	ml.RootCmd("dd if="&File.DirrootExternal &"/MIUI/theme/.data of="&File.DirRootExternal&"/MIUI/theme","",Null,Null,False)
+	ml.mkdir ("/sdcard/MIUI/theme")
+	Msgbox("Now! you can Change Font","Completed")
 End Sub
 
 Sub b2_Click
+	Dim i As Intent
+	i.Initialize(i.Action_Main,"")
+	i.SetComponent("com.android.settings/com.android.settings.Settings$FontSettingsActivity")
 	Try
-		Dim i As Intent
-		i.Initialize("", "")
-		i.SetComponent("com.android.settings/.Settings$FontSettingsActivity")
-		StartActivity(i)
+	StartActivity(i)
+	
+	
 	Catch
-		Dim i As Intent
-		i.Initialize(i.ACTION_VIEW,"com.android.thememanager")
-		StartActivity(i)
+	Msgbox("Missing Font."&CRLF&"(or)"&CRLF&"Your Phone Is Not Xiaomi.","Error")
 	End Try
 End Sub
 
