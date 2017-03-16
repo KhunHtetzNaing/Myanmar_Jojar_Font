@@ -1,11 +1,11 @@
 ﻿Type=Activity
-Version=6.5
+Version=6.8
 ModulesStructureVersion=1
 B4A=true
 @EndOfDesignText@
 #Region  Activity Attributes 
 	#FullScreen: False
-	#IncludeTitle: false
+	#IncludeTitle: True
 #End Region
 Sub Process_Globals
 	'These global variables will be declared once when the application starts.
@@ -18,27 +18,16 @@ Sub Globals
 	'These variables can only be accessed from this module.
 	Dim wb As WebView
 	Dim wv As WebViewSettings
-	Dim tlb,lb As Label
 	Dim Banner As AdView
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 	wb.Initialize("wb")
-	Activity.AddView(wb,0%x,55dip,100%x,100%y)
-	wb.LoadUrl("http://www.htetznaing.com/2017/02/Myanmar-Font-Styles.html")
+	Activity.AddView(wb,0%x,0%y,100%x,100%y)
+	wb.LoadUrl("http://www.myanmarandroidapp.com/2017/02/myanmar-font-styles.html")
 	wv.setDisplayZoomControls(wb , False)
 	
-	tlb.Initialize("tlb")
-	tlb.Text = "Tutorial"
-	tlb.Color = Colors.rgb(233, 30, 99)
-	tlb.TextColor = Colors.White
-	tlb.TextSize = 25
-	tlb.Typeface = Typeface.DEFAULT_BOLD
-	
-	tlb.Gravity = Gravity.CENTER
-	Activity.AddView(tlb,0%x,0%y,100%x,55dip)
-	
-	Banner.Initialize2("Banner","ca-app-pub-4173348573252986/4696438557",Banner.SIZE_SMART_BANNER)
+	Banner.Initialize2("Banner","ca-app-pub-4173348573252986/1936810554",Banner.SIZE_SMART_BANNER)
 	Dim height As Int
 	If GetDeviceLayoutValues.ApproximateScreenSize < 6 Then
 		'phones
@@ -49,15 +38,14 @@ Sub Activity_Create(FirstTime As Boolean)
 	End If
 	Activity.AddView(Banner, 0dip, 100%y - height, 100%x, height)
 	Banner.LoadAd
-
-	lb.Initialize("lb")
-	lb.SetBackgroundImage(LoadBitmap(File.DirAssets,"open.png"))
-	Activity.AddView(lb,100%x - 40dip,12.5dip,30dip,30dip)
+	Log(Banner)
+	
+Activity.AddMenuItem("Open in Browser","lb")
 End Sub
 
 Sub lb_Click
 	Dim p As PhoneIntents
-	StartActivity(p.OpenBrowser("http://www.htetznaing.com/2017/02/Myanmar-Font-Styles.html"))
+	StartActivity(p.OpenBrowser("http://www.myanmarandroidapp.com/2017/02/myanmar-font-styles.html"))
 End Sub
 Sub Activity_Resume
 
